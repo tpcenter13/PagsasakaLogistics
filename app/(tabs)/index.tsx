@@ -1,74 +1,123 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import React from 'react';
+import { View, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      {/* Static Background Layers */}
+      <View style={styles.backgroundLayer1} />
+      <View style={styles.backgroundLayer2} />
+      <View style={styles.backgroundLayer3} />
+
+      {/* Logo */}
+      <Image
+        source={require('@/assets/images/logo pagsasaka.png')} // Your provided logo
+        style={styles.logo}
+        resizeMode="contain"
+      />
+
+      {/* Rider Image */}
+      <Image
+        source={require('@/assets/images/motor.png')} // Your provided motor image
+        style={styles.rider}
+        resizeMode="contain"
+      />
+
+      {/* SIGN IN Button */}
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>SIGN IN</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    backgroundColor: '#01AB7E', // Base green color
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    overflow: 'hidden', // Ensure background layers stay within the container
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  backgroundLayer1: {
     position: 'absolute',
+    top: '-25%',
+    right: '-71%',
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#70C2A9',
+    transform: [{ rotate: '98deg' }], // Tilt the layer
+    borderRadius: 25,
+    shadowColor: '#000', // iOS Shadow
+    shadowOffset: { width: 0, height: 4 }, // Shadow only at the bottom
+    shadowOpacity: 0.3, // iOS Shadow
+    shadowRadius: 6, // iOS Shadow
+    elevation: 8, // Android Shadow
+    zIndex: 1, // Ensure it's on top of other views if necessary
+  },
+  backgroundLayer2: {
+    position: 'absolute',
+    top: '-20%', // Adjusted to avoid full overlap
+    right: '-65%',
+    width: '70%',
+    height: '70%',
+    backgroundColor: '#41B897',
+    transform: [{ rotate: '98deg' }], // Tilt the layer, same angle
+    borderRadius: 25,
+    shadowColor: '#000', // iOS Shadow
+    shadowOffset: { width: 0, height: 4 }, // Shadow only at the bottom
+    shadowOpacity: 0.3, // iOS Shadow
+    shadowRadius: 6, // iOS Shadow
+    elevation: 8, // Android Shadow
+    zIndex: 2, // Ensures this layer is on top if necessary
+  },
+  
+  backgroundLayer3: {
+    position: 'absolute',
+    bottom: 390,
+    left: -260,
+    width: '80%',
+    height: '40%',
+    backgroundColor: '#41B897',
+    transform: [{ rotate: '98deg' }],
+    borderRadius: 25,
+    shadowColor: '#000', // iOS Shadow
+    shadowOffset: { width: 0, height: 4 }, // Shadow only at the bottom
+    shadowOpacity: 0.3, // iOS Shadow
+    shadowRadius: 6, // iOS Shadow
+    elevation: 8, // Android Shadow
+  },
+  logo: {
+    position: 'absolute',
+    top: '25%', // Position logo at the top
+    width: 300,
+    height: 100,
+    zIndex: 1, // Ensures this layer is on top if necessary
+  },
+  rider: {
+    position: 'absolute',
+    bottom: '40%', // Adjust rider position
+    left: '9%',
+    width: 160,
+    height: 125,
+  },
+  button: {
+    position: 'absolute',
+    bottom: '25%',
+    backgroundColor: 'transparent', // Remove the white background
+    paddingVertical: 12,
+    paddingHorizontal: 50,
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: '#FFFFFF', // Keep the border color
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6, // External shadow effect
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
