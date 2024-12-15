@@ -8,6 +8,8 @@ export default function HomeScreen() {
       <View style={styles.backgroundLayer1} />
       <View style={styles.backgroundLayer2} />
       <View style={styles.backgroundLayer3} />
+      <View style={styles.backgroundLayer4} />
+      <View style={styles.backgroundLayer5} />
 
       {/* Logo */}
       <Image
@@ -69,15 +71,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3, // iOS Shadow
     shadowRadius: 6, // iOS Shadow
     elevation: 8, // Android Shadow
-    zIndex: 2, // Ensures this layer is on top if necessary
+    zIndex: 1, // Ensures this layer is on top if necessary
   },
   
   backgroundLayer3: {
     position: 'absolute',
-    bottom: 390,
-    left: -260,
-    width: '80%',
-    height: '40%',
+    bottom: 325,
+    left: -310,
+    width: '95%',
+    height: '50%',
     backgroundColor: '#41B897',
     transform: [{ rotate: '98deg' }],
     borderRadius: 25,
@@ -87,6 +89,28 @@ const styles = StyleSheet.create({
     shadowRadius: 6, // iOS Shadow
     elevation: 8, // Android Shadow
   },
+
+  backgroundLayer4: {
+    position: 'absolute',
+    bottom: -150,
+    right: -5,
+    width: '95%',
+    height: '50%',
+    backgroundColor: '#41B897',
+    transform: [{ rotate: '98deg' }],
+    borderRadius: 25,
+  },
+  backgroundLayer5: {
+    position: 'absolute',
+    bottom: -210,
+    right: -55,
+    width: '95%',
+    height: '50%',
+    backgroundColor: '#70C2A9',
+    transform: [{ rotate: '98deg' }],
+    borderRadius: 25,
+  },
+  
   logo: {
     position: 'absolute',
     top: '25%', // Position logo at the top
@@ -100,6 +124,7 @@ const styles = StyleSheet.create({
     left: '9%',
     width: 160,
     height: 125,
+    zIndex: 1, // Ensures this layer is on top if necessary
   },
   button: {
     position: 'absolute',
@@ -117,7 +142,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 21,
     fontWeight: 'bold',
   },
 });
