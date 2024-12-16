@@ -31,7 +31,7 @@ export default function HomeScreen() {
       duration: 1000, // Animation duration in milliseconds
       useNativeDriver: false,
     }).start(() => {
-      Alert.alert('Login', `Email: ${email}\nPassword: ${password}`);
+     
     });
   
     // Animate button position
