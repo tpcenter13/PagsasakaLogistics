@@ -1,4 +1,7 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'expo-router'
+
+
 import {
   View,
   Image,
@@ -18,6 +21,7 @@ export default function HomeScreen() {
   const logoPosition = useRef(new Animated.Value(45)).current; // New ref for logo position
   const riderPosition = useRef(new Animated.Value(9)).current; // Ref for rider position
   const MotorRiderSize = useRef(new Animated.ValueXY({ x: 160, y: 125 })).current; // Ref for MotorRider size
+  
 
   
   
@@ -336,7 +340,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     transform: [{ rotate: '0 deg' }],
   },
-
+  link: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    transform: [{ rotate: '0 deg' }],
+  },
   RectangleBIG: {
     position: 'absolute',
     top: '-260%',
