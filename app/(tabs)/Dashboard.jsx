@@ -6,8 +6,11 @@ const RiderDashboard = () => {
   const [parcels, setParcels] = useState([
     { id: '1', name: 'Parcel A', status: 'For Pickup' },
     { id: '2', name: 'Parcel B', status: 'For Pickup' },
-    { id: '3', name: 'Parcel C', status: 'For Pickup' },
   ]);
+
+  const handleParcelClick = (parcel) => {
+    alert(`Clicked on ${parcel.name} - Status: ${parcel.status}`);
+  };
 
   return (
     <View style={styles.container}>
@@ -51,7 +54,10 @@ const RiderDashboard = () => {
 
       {/* Note Section inside Profile Container */}
       <View style={styles.noteContainer}>
-        <Text style={styles.noteText}>Note: The items listed below are your quota parcel for today. Please plan your route accordingly.</Text>
+        <Text style={styles.noteText}>
+          Note: The items listed below are your quota parcel for today. Please plan your route
+          accordingly.
+        </Text>
 
         {/* Line between noteText and parcel items */}
         <View style={styles.noteLine} />
@@ -59,25 +65,54 @@ const RiderDashboard = () => {
         {/* White box container under the note text */}
         <View style={styles.whiteBox}>
           {/* Displaying the parcel data */}
-          <FlatList
-            data={parcels}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <View style={styles.parcelItem}>
-                <Text style={styles.parcelName}>{item.name}</Text>
-                <Text style={styles.parcelStatus}>{item.status}</Text>
-              </View>
-            )}
-          />
+              <FlatList data={parcels}keyExtractor={(item) => item.id}renderItem={({ item }) => (
+      <View style={styles.parcelInfoContainer}>
+      <View style={styles.row}>
+        <Text style={styles.parcelTitle}>FireWall</Text>
+        <Text style={styles.pickupText}>Pick Up</Text>
+      </View>
+       <Text style={styles.trackingID}>Tracking ID: 616161616178213</Text>
+
+      <View style={styles.row}>
+        <View style={styles.fromSection}>
+          <Text style={styles.fromLabel}>● From</Text>
+          <Text style={styles.fromValue}>7A, Boston</Text>
+        </View>
+        <View style={styles.detailsSection}>
+          <Text style={styles.detailLabel}>Kg:</Text>
+          <Text style={styles.detailValue}>5</Text>
+        </View>
+        <View style={styles.detailsSection}>
+          <Text style={styles.detailLabel}>Delivery Charge:</Text>
+          <Text style={styles.detailValue}>40</Text>
         </View>
       </View>
 
-      {/* Footer Section with Home Button */}
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.homeButton}>
-          <Text style={styles.homeButtonText}>Home</Text>
-        </TouchableOpacity>
+      <View style={styles.row}>
+        <View style={styles.shippedToSection}>
+          <Text style={styles.shippedToLabel}>📍 Shipped to</Text>
+          <Text style={styles.shippedToValue}>Texas</Text>
+        </View>
+        <View style={styles.phoneSection}>
+          <Text style={styles.phoneLabel}>Phone number</Text>
+          <Text style={styles.phoneValue}>09123122341</Text>
+        </View>
       </View>
+    </View>
+                )}
+              />
+
+        </View>
+      </View>
+
+      <View style={styles.footer}>
+  <TouchableOpacity style={styles.homeButton}>
+    <Image
+      source={require('@/assets/images/Home.png')}
+      style={styles.homeButtonImage}
+    />
+  </TouchableOpacity>
+</View>
     </View>
   );
 };
@@ -180,52 +215,128 @@ const styles = StyleSheet.create({
     color: '#000',
     backgroundColor: '#fff',
     paddingLeft: '2%',
-    marginBottom: 10, // Space below the note text
+    marginBottom: 10,
   },
   noteLine: {
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',  // Light gray line color
-    marginVertical: 10,  // Adds space between the text and line
+    borderBottomColor: '#ccc',
+    marginVertical: 10,
   },
   whiteBox: {
     padding: 20,
     backgroundColor: '#fff',
-    borderRadius: 5,
-    elevation: 2, // Optional: adds shadow for better visibility
+    borderRadius: 10, // Slightly rounded corners
+    borderWidth: 1, // Thin border
+    borderColor: '#ccc', // Light gray border
+    shadowColor: '#000', // Shadow for elevation
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3, // For Android shadow
+    margin: 10, // Adds spacing around the box
+    height: 350,
   },
-  parcelItem: {
+  
+  parcelInfoContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 15,
     marginBottom: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 3,
   },
-  parcelName: {
-    fontSize: 16,
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  parcelTitle: {
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#000',
   },
-  parcelStatus: {
+  pickupText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#008000',
+  },
+  trackingID: {
     fontSize: 14,
     color: '#888',
+    marginBottom: 10,
   },
+  fromSection: {
+    flex: 1,
+  },
+  fromLabel: {
+    fontSize: 14,
+    color: '#000',
+    fontWeight: 'bold',
+  },
+  fromValue: {
+    fontSize: 14,
+    color: '#555',
+  },
+  detailsSection: {
+    alignItems: 'flex-end',
+    marginLeft: 15,
+  },
+  detailLabel: {
+    fontSize: 14,
+    color: '#000',
+  },
+  detailValue: {
+    fontSize: 14,
+    color: '#555',
+  },
+  shippedToSection: {
+    flex: 1,
+  },
+  shippedToLabel: {
+    fontSize: 14,
+    color: '#000',
+    fontWeight: 'bold',
+  },
+  shippedToValue: {
+    fontSize: 14,
+    color: '#555',
+  },
+  phoneSection: {
+    alignItems: 'flex-end',
+    marginLeft: 15,
+  },
+  phoneLabel: {
+    fontSize: 14,
+    color: '#000',
+  },
+  phoneValue: {
+    fontSize: 14,
+    color: '#555',
+  },
+  
   footer: {
-    backgroundColor: '#608C54', // Same color as the header
+    position: 'absolute',
+    bottom: 35,
+    left: 0,
+    right: 0,
+    backgroundColor: '#608C54',
     paddingVertical: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '5%', // Adjusts space above the footer
   },
-  homeButton: {
-    backgroundColor: '#fff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    borderColor: '#608C54',
-    borderWidth: 1,
+  
+  homeButtonImage: {
+    width: 40, // Adjust width as needed
+    height: 40, // Adjust height as needed
+    resizeMode: 'contain', // Ensures the image maintains its aspect ratio
   },
-  homeButtonText: {
-    color: '#608C54',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+  
 });
 
 export default RiderDashboard;
