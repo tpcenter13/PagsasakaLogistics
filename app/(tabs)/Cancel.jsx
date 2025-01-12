@@ -8,9 +8,9 @@ const Cancel = () => {
   // Navigation handlers
   const goToDashboard = () => router.push('/Dashboard');
   const goToPickUp = () => router.push('/PickUp');
-  const goToDelivery = () => router.push('/Delivery');  // Make sure the path is '/Delivery' with uppercase 'D'
+  const goToDelivery = () => router.push('/Delivery');
   const goToCompleted = () => router.push('/Completed');
-  const goToCancel = () => router.push('/Cancel');  // Make sure this is also correct, if needed
+  const goToCancel = () => router.push('/Cancel');
 
   return (
     <View style={styles.container}>
@@ -24,7 +24,7 @@ const Cancel = () => {
         <TouchableOpacity style={styles.buttonTransparent} onPress={goToPickUp}>
           <Text style={styles.buttonTextBlack}>Pick Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonTransparent} onPress={goToDelivery}>  {/* Correct route for Delivery */}
+        <TouchableOpacity style={styles.buttonTransparent} onPress={goToDelivery}>
           <Text style={styles.buttonTextBlack}>Delivery</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonTransparent} onPress={goToCompleted}>
@@ -32,7 +32,7 @@ const Cancel = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.buttonTransparent, styles.cancelButton]}
-          onPress={goToCancel}  // Ensure this button goes to the correct 'Cancel' route
+          onPress={goToCancel}
         >
           <Text style={styles.buttonTextRed}>Cancel</Text>
         </TouchableOpacity>
