@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 
-const PickUp = () => {
+const Delivery = () => {
   const router = useRouter();
-
+  
   // Navigation handlers
   const goToDashboard = () => router.push('Dashboard');
   const goToPickUp = () => router.push('/PickUp');
@@ -41,40 +41,6 @@ const PickUp = () => {
       {/* Line under the buttons */}
       <View style={styles.line} />
 
-      {/* Card Section */}
-      <View style={styles.card}>
-        {/* Group A */}
-        <View style={styles.groupA}>
-          <View style={styles.groupARow}>
-            <View>
-              <Text style={styles.cardTitle}>FireWall</Text>
-              <Text style={styles.cardSubText}>Tracking ID: 616161616178213</Text>
-            </View>
-            <View style={styles.todoContainer}>
-              <Text style={styles.todoText}>To do</Text>
-              <Text style={styles.todoPhone}>09123122341</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Horizontal Divider Line */}
-        <View style={styles.horizontalDivider} />
-
-        {/* Group B */}
-        <View style={styles.groupB}>
-          <Text style={styles.cardFrom}>From: 7A, Boston</Text>
-          <Text style={styles.cardTo}>Shipped to: Texas</Text>
-          <View style={styles.cardActions}>
-            <TouchableOpacity style={styles.issueButton}>
-              <Text style={styles.buttonTextWhite}>Issue</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.scanButton}>
-              <Text style={styles.buttonTextWhite}>Scan QR</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-
       {/* Footer Section */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.homeButton} onPress={goToDashboard}>
@@ -87,7 +53,6 @@ const PickUp = () => {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -102,7 +67,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 180,
     height: 50,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -136,89 +101,6 @@ const styles = StyleSheet.create({
     borderBottomColor: 'rgba(0, 0, 0, 0.25)',
     marginTop: 10,
   },
-  card: {
-    backgroundColor: '#fff',
-    margin: 10,
-    padding: 15,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  groupA: {
-    marginBottom: 10,
-  },
-  groupARow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  cardTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-  cardSubText: {
-    fontSize: 14,
-    color: '#666',
-  },
-  todoContainer: {
-    alignItems: 'flex-end',
-  },
-  todoText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-  todoPhone: {
-    fontSize: 14,
-    color: '#666',
-  },
-  horizontalDivider: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0, 0, 0, 0.2)',
-    marginVertical: 10,
-  },
-  groupB: {
-    marginTop: 10,
-  },
-  cardFrom: {
-    fontSize: 14,
-    color: '#000',
-    marginBottom: 5,
-  },
-  cardTo: {
-    fontSize: 14,
-    color: '#000',
-    marginBottom: 10,
-  },
-  cardActions: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  issueButton: {
-    backgroundColor: '#E63946',
-    padding: 10,
-    borderRadius: 5,
-    marginRight: 10,
-    flex: 1,
-    alignItems: 'center',
-  },
-  scanButton: {
-    backgroundColor: '#006D32',
-    padding: 10,
-    borderRadius: 5,
-    flex: 1,
-    alignItems: 'center',
-  },
-  buttonTextWhite: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
   footer: {
     position: 'absolute',
     bottom: -5,
@@ -236,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PickUp;
+export default Delivery;

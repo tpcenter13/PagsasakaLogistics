@@ -1,13 +1,44 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image, FlatList } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const RiderDashboard = () => {
-  // Example data to display inside the white box
+  const router = useRouter();
+
+  // Example data for parcels
   const [parcels, setParcels] = useState([
-    { id: '1', name: 'Parcel A', status: 'For Pickup' },
-    { id: '2', name: 'Parcel B', status: 'For Pickup' },
+    {
+      id: '1',
+      name: 'Parcel A',
+      status: 'For Pickup',
+      from: '7A, Boston',
+      to: 'Texas',
+      kg: '5',
+      deliveryCharge: '40',
+      phone: '09123122341',
+      trackingID: '616161616178213',
+    },
+    {
+      id: '2',
+      name: 'Parcel B',
+      status: 'For Pickup',
+      from: '5B, Chicago',
+      to: 'New York',
+      kg: '3',
+      deliveryCharge: '30',
+      phone: '09123122342',
+      trackingID: '626262626278214',
+    },
   ]);
 
+  // Navigation handlers
+  const goToDashboard = () => router.push('Dashboard');
+  const goToPickUp = () => router.push('/PickUp');
+  const goToDelivery = () => router.push('/Delivery');
+  const goToCompleted = () => router.push('/Completed');
+  const goToCancel = () => router.push('/Cancel');
+
+  // Parcel click handler
   const handleParcelClick = (parcel) => {
     alert(`Clicked on ${parcel.name} - Status: ${parcel.status}`);
   };
@@ -16,21 +47,27 @@ const RiderDashboard = () => {
     <View style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-        <Image source={require('@/assets/images/PagsasakaRider.png')} style={styles.logo} />
+        <Image
+          source={require('@/assets/images/PagsasakaRider.png')}
+          style={styles.logo}
+        />
       </View>
 
       {/* Buttons Section */}
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.buttonTransparent}>
+        <TouchableOpacity style={styles.buttonTransparent} onPress={goToPickUp}>
           <Text style={styles.buttonTextBlack}>Pick Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonTransparent}>
+        <TouchableOpacity style={styles.buttonTransparent} onPress={goToDelivery}>
           <Text style={styles.buttonTextBlack}>Delivery</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonTransparent}>
+        <TouchableOpacity style={styles.buttonTransparent} onPress={goToCompleted}>
           <Text style={styles.buttonTextBlack}>Completed</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.buttonTransparent, styles.cancelButton]}>
+        <TouchableOpacity
+          style={[styles.buttonTransparent, styles.cancelButton]}
+          onPress={goToCancel}
+        >
           <Text style={styles.buttonTextRed}>Cancel</Text>
         </TouchableOpacity>
       </View>
@@ -40,7 +77,10 @@ const RiderDashboard = () => {
 
       {/* Profile and Note Section */}
       <View style={styles.profileContainer}>
-        <Image source={require('@/assets/images/RiderProfile.png')} style={styles.profileImage} />
+        <Image
+          source={require('@/assets/images/RiderProfile.png')}
+          style={styles.profileImage}
+        />
         <View style={styles.profileInfo}>
           <View style={styles.userNameContainer}>
             <Text style={styles.userName}>John Doe</Text>
@@ -52,67 +92,69 @@ const RiderDashboard = () => {
         </View>
       </View>
 
-      {/* Note Section inside Profile Container */}
+      {/* Note Section */}
       <View style={styles.noteContainer}>
         <Text style={styles.noteText}>
-          Note: The items listed below are your quota parcel for today. Please plan your route
+          Note: The items listed below are your quota parcels for today. Please plan your route
           accordingly.
         </Text>
 
-        {/* Line between noteText and parcel items */}
         <View style={styles.noteLine} />
 
-        {/* White box container under the note text */}
+        {/* Parcel List */}
         <View style={styles.whiteBox}>
-          {/* Displaying the parcel data */}
-              <FlatList data={parcels}keyExtractor={(item) => item.id}renderItem={({ item }) => (
-      <View style={styles.parcelInfoContainer}>
-      <View style={styles.row}>
-        <Text style={styles.parcelTitle}>FireWall</Text>
-        <Text style={styles.pickupText}>Pick Up</Text>
+          <FlatList
+            data={parcels}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={styles.parcelInfoContainer}
+                onPress={() => handleParcelClick(item)}
+              >
+                <View style={styles.row}>
+                  <Text style={styles.parcelTitle}>{item.name}</Text>
+                  <Text style={styles.pickupText}>{item.status}</Text>
+                </View>
+                <Text style={styles.trackingID}>Tracking ID: {item.trackingID}</Text>
+                <View style={styles.row}>
+                  <View style={styles.fromSection}>
+                    <Text style={styles.fromLabel}>● From</Text>
+                    <Text style={styles.fromValue}>{item.from}</Text>
+                  </View>
+                  <View style={styles.detailsSection}>
+                    <Text style={styles.detailLabel}>Kg:</Text>
+                    <Text style={styles.detailValue}>{item.kg}</Text>
+                  </View>
+                  <View style={styles.detailsSection}>
+                    <Text style={styles.detailLabel}>Delivery Charge:</Text>
+                    <Text style={styles.detailValue}>{item.deliveryCharge}</Text>
+                  </View>
+                </View>
+                <View style={styles.row}>
+                  <View style={styles.shippedToSection}>
+                    <Text style={styles.shippedToLabel}>📍 Shipped to</Text>
+                    <Text style={styles.shippedToValue}>{item.to}</Text>
+                  </View>
+                  <View style={styles.phoneSection}>
+                    <Text style={styles.phoneLabel}>Phone number</Text>
+                    <Text style={styles.phoneValue}>{item.phone}</Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
       </View>
-       <Text style={styles.trackingID}>Tracking ID: 616161616178213</Text>
 
-      <View style={styles.row}>
-        <View style={styles.fromSection}>
-          <Text style={styles.fromLabel}>● From</Text>
-          <Text style={styles.fromValue}>7A, Boston</Text>
-        </View>
-        <View style={styles.detailsSection}>
-          <Text style={styles.detailLabel}>Kg:</Text>
-          <Text style={styles.detailValue}>5</Text>
-        </View>
-        <View style={styles.detailsSection}>
-          <Text style={styles.detailLabel}>Delivery Charge:</Text>
-          <Text style={styles.detailValue}>40</Text>
-        </View>
-      </View>
-
-      <View style={styles.row}>
-        <View style={styles.shippedToSection}>
-          <Text style={styles.shippedToLabel}>📍 Shipped to</Text>
-          <Text style={styles.shippedToValue}>Texas</Text>
-        </View>
-        <View style={styles.phoneSection}>
-          <Text style={styles.phoneLabel}>Phone number</Text>
-          <Text style={styles.phoneValue}>09123122341</Text>
-        </View>
-      </View>
-    </View>
-                )}
-              />
-
-        </View>
-      </View>
-
+      {/* Footer */}
       <View style={styles.footer}>
-  <TouchableOpacity style={styles.homeButton}>
-    <Image
-      source={require('@/assets/images/Home.png')}
-      style={styles.homeButtonImage}
-    />
-  </TouchableOpacity>
-</View>
+        <TouchableOpacity style={styles.homeButton}>
+          <Image
+            source={require('@/assets/images/Home.png')}
+            style={styles.homeButtonImage}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
