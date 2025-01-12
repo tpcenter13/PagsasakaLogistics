@@ -124,24 +124,24 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#608C54',
-    paddingVertical: 15,
+    paddingVertical: 10,
     alignItems: 'center',
   },
   logo: {
     width: 180,
-    height: 70,
+    height: 50,
     resizeMode: 'contain',
   },
   buttonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: 10,
     paddingHorizontal: 10,
   },
   buttonTransparent: {
     backgroundColor: 'transparent',
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
     borderRadius: 5,
   },
   cancelButton: {
@@ -189,13 +189,13 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   userName: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#000',
     marginTop: -5,
   },
   userID: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: 'bold',
     color: '#000',
     marginTop: 5,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   noteContainer: {
-    padding: 15,
+    padding: 5,
     backgroundColor: '#fff',
     marginTop: 0,
   },
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     color: '#000',
     backgroundColor: '#fff',
     paddingLeft: '2%',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   noteLine: {
     borderBottomWidth: 1,
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#ccc',
-    padding: 15,
+    padding: 10,
     marginBottom: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -254,22 +254,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   parcelTitle: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
     color: '#000',
   },
   pickupText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     color: '#008000',
   },
   trackingID: {
     fontSize: 14,
     color: '#888',
-    marginBottom: 10,
+    marginBottom: 9,
   },
   fromSection: {
     flex: 1,
@@ -312,28 +312,28 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   phoneLabel: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#000',
   },
   phoneValue: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#555',
   },
   
   footer: {
     position: 'absolute',
-    bottom: 35,
+    bottom: -5,
     left: 0,
     right: 0,
     backgroundColor: '#608C54',
-    paddingVertical: 30,
+    paddingVertical: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   
   homeButtonImage: {
-    width: 40, // Adjust width as needed
-    height: 40, // Adjust height as needed
+    width: 25, // Adjust width as needed
+    height: 25, // Adjust height as needed
     resizeMode: 'contain', // Ensures the image maintains its aspect ratio
   },
   

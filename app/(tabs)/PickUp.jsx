@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#608C54',
-    paddingVertical: 15,
+    paddingVertical: 10,
     alignItems: 'center',
   },
   logo: {
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   buttonTransparent: {
     backgroundColor: 'transparent',
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
     borderRadius: 5,
   },
   cancelButton: {
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: 'absolute',
-    bottom: 35,
+    bottom: -5,
     left: 0,
     right: 0,
     backgroundColor: '#608C54',
