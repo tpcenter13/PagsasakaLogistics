@@ -87,13 +87,13 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 180,
-    height: 70,
-    resizeMode: 'contain',
+    height: 50,
+    resizeMode: 'contain'
   },
   buttonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: 10,
     paddingHorizontal: 10,
   },
   buttonTransparent: {
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardTitle: {
-    fontSize: 20, // H3 font size
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#000',
   },
@@ -211,13 +211,13 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     backgroundColor: '#608C54',
-    paddingVertical: 30,
+    paddingVertical: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   homeButtonImage: {
-    width: 40,
-    height: 40,
+    width: 25,
+    height: 25,
     resizeMode: 'contain',
   },
 });
